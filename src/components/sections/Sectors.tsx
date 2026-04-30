@@ -79,7 +79,7 @@ export function Sectors() {
             >
               {/* Icon Container */}
               <div className="w-16 h-16 rounded-2xl bg-electric/5 flex items-center justify-center mb-8 border border-electric/10 group-hover:bg-electric group-hover:text-black transition-all duration-500 shadow-[0_0_20px_rgba(32,236,252,0.05)]">
-                {React.cloneElement(sector.icon as React.ReactElement, { className: "text-electric group-hover:text-black transition-colors" })}
+                {React.cloneElement(sector.icon as React.ReactElement<any>, { className: "text-electric group-hover:text-black transition-colors" })}
               </div>
 
               {/* Content */}
