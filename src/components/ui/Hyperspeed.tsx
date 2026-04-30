@@ -555,7 +555,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }: { effectOptions?
 
             if (obj.material) {
               if (Array.isArray(obj.material)) {
-                obj.material.forEach(material => material.dispose());
+                obj.material.forEach((material: any) => material.dispose());
               } else {
                 obj.material.dispose();
               }
@@ -672,7 +672,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }: { effectOptions?
         let curve = new THREE.LineCurve3(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, -1));
         let geometry = new THREE.TubeGeometry(curve, 40, 1, 8, false);
 
-        let instanced = new THREE.InstancedBufferGeometry().copy(geometry);
+        let instanced = new THREE.InstancedBufferGeometry().copy(geometry as any);
         instanced.instanceCount = options.lightPairsPerRoadWay * 2;
 
         let laneWidth = options.roadWidth / options.lanesPerRoad;
@@ -829,7 +829,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }: { effectOptions?
       init() {
         const options = this.options;
         const geometry = new THREE.PlaneGeometry(1, 1);
-        let instanced = new THREE.InstancedBufferGeometry().copy(geometry);
+        let instanced = new THREE.InstancedBufferGeometry().copy(geometry as any);
         let totalSticks = options.totalSideLightSticks;
         instanced.instanceCount = totalSticks;
 
