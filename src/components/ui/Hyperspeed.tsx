@@ -415,7 +415,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }: { effectOptions?
             preset: SMAAPreset.MEDIUM,
             searchImage: SMAAEffect.searchImageDataURL,
             areaImage: SMAAEffect.areaImageDataURL
-          })
+          } as any)
         );
         this.renderPass.renderToScreen = false;
         this.bloomPass.renderToScreen = false;
