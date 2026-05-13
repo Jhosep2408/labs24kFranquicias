@@ -2,23 +2,25 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { LogoOfficial } from "../common/LogoOfficial";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { name: "Inicio", href: "/" },
-  { name: "Sobre Nosotros", href: "/sobre-nosotros" },
-  { name: "Sectores", href: "#sectores" },
-  { name: "Inversión", href: "#invertir" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contacto", href: "/contacto" },
+  { name: "El Modelo", href: "/#modelo" },
+  { name: "Rentabilidad", href: "/#rentabilidad" },
+  { name: "Expansión", href: "/#expansion" },
+  { name: "Tecnología", href: "/#tecnologia" },
+  { name: "Área Privada", href: "https://crm.labs24k.com" },
 ];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hoveredPath, setHoveredPath] = useState<string | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,20 +37,20 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
-          "w-full max-w-7xl px-2 md:px-4 py-1 rounded-full border border-white/10 backdrop-blur-xl flex items-center justify-between transition-all pointer-events-auto",
+          "w-full max-w-7xl px-2 md:px-6 py-2 rounded-full border border-white/10 backdrop-blur-xl flex items-center justify-between transition-all pointer-events-auto",
           scrolled ? "bg-black-rich/60 shadow-[0_0_40px_rgba(32,236,252,0.1)] border-electric-cyan/20" : "bg-black-rich/30"
         )}
       >
         {/* Logo Container */}
         <Link href="/" className="group flex items-center gap-3">
-          <div className="relative w-14 h-14 md:w-20 md:h-20 bg-white/5 rounded-full border border-white/10 flex items-center justify-center overflow-hidden transition-all group-hover:border-electric-cyan/50 group-hover:shadow-[0_0_20px_rgba(32,236,252,0.3)]">
+          <div className="relative w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-full border border-white/10 flex items-center justify-center overflow-hidden transition-all group-hover:border-electric-cyan/50 group-hover:shadow-[0_0_20px_rgba(32,236,252,0.3)]">
             <div className="absolute inset-0 bg-gradient-to-br from-electric-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="w-full h-full text-white relative z-10 flex items-center justify-center">
               <LogoOfficial />
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="text-lg md:text-xl font-bold tracking-tighter text-white leading-none">
+            <span className="text-base md:text-lg font-bold tracking-tighter text-white leading-none">
               LABS<span className="text-electric-cyan">24K</span>
             </span>
             <span className="text-[10px] md:text-xs font-medium text-white/50 tracking-[0.2em] uppercase">
@@ -57,18 +59,51 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8 px-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium text-white/70 hover:text-electric-cyan transition-colors relative group"
-            >
-              {item.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-electric-cyan transition-all group-hover:w-full" />
-            </Link>
-          ))}
+        {/* Desktop Menu & CTA */}
+        <div className="hidden md:flex items-center gap-4 px-4">
+          <div className="flex items-center gap-1 mr-4">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onMouseEnter={() => setHoveredPath(item.href)}
+                  onMouseLeave={() => setHoveredPath(null)}
+                  className={cn(
+                    "relative px-4 py-2 text-sm font-medium transition-colors duration-300",
+                    isActive ? "text-white" : "text-white/60 hover:text-white"
+                  )}
+                >
+                  {/* Background Pill */}
+                  <AnimatePresence>
+                    {(hoveredPath === item.href || isActive) && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className={cn(
+                          "absolute inset-0 rounded-full -z-10",
+                          isActive ? "bg-electric-cyan/20 border border-electric-cyan/30" : "bg-white/5"
+                        )}
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                  </AnimatePresence>
+                  
+                  {/* Text */}
+                  <span className="relative z-10">{item.name}</span>
+                </Link>
+              );
+            })}
+          </div>
+          
+          <Link href="/#expansion">
+            <button className="bg-electric-cyan text-white px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-[0_0_20px_rgba(32,236,252,0.3)]">
+              Solicitar Exclusividad de Zona
+            </button>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -130,13 +165,22 @@ export function Navbar() {
                   >
                     <Link
                       href={item.href}
-                      className="group flex items-center justify-between py-4 border-b border-white/5 text-xl font-light text-white/80 hover:text-electric-cyan transition-colors"
+                      className={cn(
+                        "group flex items-center justify-between py-4 border-b border-white/5 text-xl font-light transition-colors",
+                        pathname === item.href ? "text-electric-cyan" : "text-white/80 hover:text-electric-cyan"
+                      )}
                       onClick={() => setIsOpen(false)}
                     >
-                      <span className="group-hover:translate-x-3 transition-transform duration-300">
+                      <span className={cn(
+                        "transition-transform duration-300",
+                        pathname === item.href ? "translate-x-3 font-bold" : "group-hover:translate-x-3"
+                      )}>
                         {item.name}
                       </span>
-                      <ChevronRight size={18} className="text-white/20 group-hover:text-electric-cyan group-hover:-translate-x-1 transition-all" />
+                      <ChevronRight size={18} className={cn(
+                        "transition-all",
+                        pathname === item.href ? "text-electric-cyan -translate-x-1" : "text-white/20 group-hover:text-electric-cyan group-hover:-translate-x-1"
+                      )} />
                     </Link>
                   </motion.div>
                 ))}
@@ -148,9 +192,9 @@ export function Navbar() {
                 transition={{ delay: 0.2 + navItems.length * 0.05 }}
                 className="mt-auto pt-10"
               >
-                 <Link href="/contacto" onClick={() => setIsOpen(false)}>
+                 <Link href="/#expansion" onClick={() => setIsOpen(false)}>
                    <button className="w-full py-4 bg-electric-cyan text-black font-black uppercase tracking-widest text-sm rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(32,236,252,0.2)]">
-                     Contactar Ahora
+                     Contactar
                    </button>
                  </Link>
               </motion.div>

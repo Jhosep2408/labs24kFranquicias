@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Globe, Mail, Phone, MapPin } from "lucide-react";
+import { LogoOfficial } from "../common/LogoOfficial";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,9 +12,18 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-electric-cyan rounded flex items-center justify-center text-black font-black text-sm">24</div>
-              <span className="text-xl font-black tracking-tighter font-heading text-white">LABS 24K</span>
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-white/5 rounded-full border border-white/10 flex items-center justify-center text-white overflow-hidden transition-all hover:border-electric-cyan/50">
+                <LogoOfficial />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold tracking-tighter text-white leading-none">
+                  LABS<span className="text-electric-cyan">24K</span>
+                </span>
+                <span className="text-[10px] font-medium text-white/50 tracking-[0.2em] uppercase">
+                  Franquicias
+                </span>
+              </div>
             </Link>
             <p className="text-white/50 text-sm leading-relaxed mb-8">
               Liderando la revolución de la Inteligencia Artificial global. Transformamos mercados a través de tecnología disruptiva y socios visionarios.
@@ -35,11 +45,11 @@ export function Footer() {
           <div>
             <h4 className="text-electric-cyan font-bold uppercase tracking-widest text-xs mb-8">Navegación</h4>
             <ul className="flex flex-col gap-4 text-sm text-white/60">
-              <li><Link href="/sobre-nosotros" className="hover:text-white transition-colors">Sobre Nosotros</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Centros de Excelencia</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Perfil del Socio</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Inversión y Retorno</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Blog Tech</Link></li>
+              <li><Link href="/#modelo" className="hover:text-white transition-colors">El Modelo</Link></li>
+              <li><Link href="/#rentabilidad" className="hover:text-white transition-colors">Inversión y Retorno</Link></li>
+              <li><Link href="/#expansion" className="hover:text-white transition-colors">Plan de Expansión</Link></li>
+              <li><Link href="/#tecnologia" className="hover:text-white transition-colors">Tecnología de Excelencia</Link></li>
+              <li><a href="https://crm.labs24k.com" className="hover:text-white transition-colors">Área Privada</a></li>
             </ul>
           </div>
 
@@ -57,21 +67,21 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-electric-cyan font-bold uppercase tracking-widest text-xs mb-8">Contacto Global</h4>
+            <h4 className="text-electric-cyan font-bold uppercase tracking-widest text-xs mb-8">Oficina Central</h4>
             <ul className="flex flex-col gap-4 text-sm text-white/60">
-              <li className="flex items-start gap-3">
-                <MapPin size={18} className="text-electric-cyan shrink-0" />
-                <span>C. Marqués de San Esteban, 3, Gijón</span>
+              <li className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                <MapPin size={20} className="text-electric-cyan shrink-0" />
+                <span className="text-white font-medium">C. Marqués de San Esteban, 3, Gijón, Asturias, España</span>
               </li>
-              <li className="flex items-center gap-3">
+              <li className="flex items-center gap-3 px-2">
                 <Mail size={18} className="text-electric-cyan shrink-0" />
-                <span>info@labs24kfranquicias.com</span>
+                <a href="mailto:info@labs24kfranquicias.com" className="hover:text-electric-cyan transition-colors">info@labs24kfranquicias.com</a>
               </li>
-              <li className="flex items-center gap-3">
+              <li className="flex items-center gap-3 px-2">
                 <Phone size={18} className="text-electric-cyan shrink-0" />
                 <span>+34 984 25 23 61</span>
               </li>
-              <li className="flex items-center gap-3 mt-4 text-electric-cyan font-bold">
+              <li className="flex items-center gap-3 mt-4 text-electric-cyan font-black px-2 text-[10px] tracking-widest uppercase">
                 <Globe size={18} />
                 <span>Presencia en +40 países</span>
               </li>
@@ -79,13 +89,13 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bottom Bar - Legal & RGPD */}
         <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-[0.2em] text-white/30 font-bold">
           <div>© {currentYear} Labs 24K Global AI Franchise. Todos los derechos reservados.</div>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Privacidad</a>
-            <a href="#" className="hover:text-white transition-colors">Legal</a>
-            <a href="#" className="hover:text-white transition-colors">Cookies</a>
+            <Link href="/privacidad" className="hover:text-electric-cyan transition-colors">Política de Privacidad</Link>
+            <Link href="/aviso-legal" className="hover:text-electric-cyan transition-colors">Aviso Legal</Link>
+            <Link href="/cookies" className="hover:text-electric-cyan transition-colors">Política de Cookies</Link>
           </div>
         </div>
       </div>

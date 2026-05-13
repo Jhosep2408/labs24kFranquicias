@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export function FinalCTA() {
   const scrollToContact = () => {
-    document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("expansion")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -25,13 +25,13 @@ export function FinalCTA() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-5xl md:text-8xl font-black mb-8 md:mb-12 leading-[1.1] md:leading-[0.95] tracking-tighter uppercase font-heading italic">
-            El Futuro no se espera. <span className="text-white/20">Se lidera.</span> <br />
-            <span className="text-electric">Conviértase en Socio</span> Estratégico
+          <h2 className="text-3xl sm:text-5xl md:text-8xl font-black mb-8 md:mb-12 leading-[1.2] md:leading-[0.95] tracking-tight md:tracking-tighter uppercase font-heading italic">
+            Nosotros ponemos la ingeniería. <br />
+            <span className="text-electric">Tú pones la visión.</span>
           </h2>
 
-          <p className="text-base md:text-2xl text-white/50 mb-10 md:mb-16 max-w-2xl mx-auto font-light px-4">
-            Estamos seleccionando a los líderes que operarán los laboratorios de innovación del mañana. Asegure su zona de exclusividad hoy mismo.
+          <p className="text-base md:text-xl text-white/70 mb-10 md:mb-16 max-w-3xl mx-auto font-light px-4 leading-relaxed">
+            Recibe tu agencia de IA y Desarrollo con todo el material de papelería, acceso a contratos públicos, formación constante y sistemas listos para facturar a cualquier nivel desde el primer día.
           </p>
 
           <motion.button
@@ -41,7 +41,7 @@ export function FinalCTA() {
             className="group relative bg-electric text-black px-8 md:px-12 py-5 md:py-7 rounded-sm font-black text-lg md:text-2xl uppercase tracking-widest overflow-hidden transition-all shadow-[0_0_30px_rgba(32,236,252,0.2)]"
           >
             <span className="relative z-10 flex items-center gap-3">
-              Aplicar para Franquicia
+              Descargar Dossier Informativo
               <ArrowUpRight size={24} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </span>
           </motion.button>

@@ -83,7 +83,7 @@ export function Sectors() {
               </div>
 
               {/* Content */}
-              <h3 className="text-2xl font-black mb-4 uppercase tracking-tight text-white group-hover:text-electric transition-colors italic">
+              <h3 className="text-2xl font-black mb-4 uppercase tracking-normal text-white group-hover:text-electric transition-colors italic">
                 {sector.title}
               </h3>
               <p className="text-white/50 mb-8 leading-relaxed">

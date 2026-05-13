@@ -13,7 +13,7 @@ const stats = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 md:pt-28 pb-10 overflow-hidden bg-[#000000]">
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 md:pt-24 pb-8 overflow-hidden bg-[#000000]">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 z-0">
         <Hyperspeed
@@ -59,7 +59,7 @@ export function Hero() {
 
       <div className="relative z-10 container mx-auto px-6 max-w-7xl">
         {/* Top Split Layout - Responsive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column: Title & Badge */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -76,15 +76,37 @@ export function Hero() {
               Socio Fundador 2026
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[0.9] tracking-tighter uppercase font-heading italic">
-              LABS 24K: <br />
-              <span className="text-electric drop-shadow-[0_0_25px_rgba(32,236,252,0.3)]">Oportunidad de Inicio</span> <br />
-              <span className="text-white">Empresarial IA</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] md:leading-[0.95] tracking-tight md:tracking-tighter uppercase font-heading italic">
+              No estás comprando una franquicia. <br />
+              <span className="text-electric drop-shadow-[0_0_25px_rgba(32,236,252,0.3)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Estás reservando tu lugar en la historia</span> <br />
+              <span className="text-white text-2xl sm:text-3xl md:text-4xl">tecnológica de tu ciudad.</span>
             </h1>
 
-            <p className="mt-6 text-sm md:text-lg text-white/50 max-w-sm font-light leading-relaxed tracking-wide">
-              Buscamos <span className="text-white font-bold italic">socios estratégicos</span> para liderar la red global de laboratorios de innovación más rentable de España.
+            <p className="mt-4 text-sm md:text-lg text-white/70 max-w-xl font-light leading-relaxed tracking-wide">
+              <strong className="text-white">Labs24k es la primera red física de Centros de Inteligencia Artificial.</strong> La misma oportunidad que las Telecomunicaciones en los 90, pero con el poder de la IA.
             </p>
+
+            <div className="mt-8 flex flex-col gap-4">
+              <motion.button
+                onClick={() => window.location.href = '#expansion'}
+                whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(32,236,252,0.4)" }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full sm:w-auto bg-electric text-black px-8 py-4 rounded-sm font-black text-sm md:text-base uppercase tracking-widest flex items-center justify-center gap-3 transition-all"
+              >
+                Ver Disponibilidad en mi Código Postal
+                <ArrowRight size={18} />
+              </motion.button>
+              
+              <div className="flex items-center gap-2 mt-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                </span>
+                <span className="text-white/60 text-xs md:text-sm italic font-bold">
+                  12 Zonas reservadas en los últimos 30 días.
+                </span>
+              </div>
+            </div>
           </motion.div>
 
           {/* Right Column: Elegant Corporate Card */}
@@ -94,29 +116,29 @@ export function Hero() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="relative flex justify-end"
           >
-            <div className="relative p-6 md:p-8 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-3xl overflow-hidden group max-w-md">
+            <div className="relative p-6 md:p-8 rounded-[2rem] border border-white/10 bg-white/[0.02] backdrop-blur-3xl overflow-hidden group max-w-sm">
               {/* Card Decor */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-electric/10 blur-[60px] rounded-full group-hover:bg-electric/20 transition-all duration-500" />
 
               <div className="relative z-10">
-                <div className="flex items-center gap-2 text-electric text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+                <div className="flex items-center gap-2 text-electric text-[9px] font-black uppercase tracking-[0.3em] mb-4">
                   <div className="w-8 h-[1px] bg-electric/50" />
-                  Modelo de Negocio Premium
+                  Músculo Técnico de Elite
                 </div>
 
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-4 leading-tight uppercase tracking-tight">
-                  Infraestructura <br /> de Éxito Llave en Mano
+                <h3 className="text-xl md:text-2xl font-black text-white mb-4 leading-tight uppercase tracking-tight italic">
+                  200 Ingenieros <br /> <span className="text-electric-cyan">A Tu Servicio</span>
                 </h3>
 
-                <p className="text-white/60 text-xs md:text-sm leading-relaxed mb-8 font-light italic">
-                  "En Labs 24K, forjamos laboratorios de éxito corporativo. Nuestra visión es ser la red global líder en innovación, ofreciendo a nuestros franquiciados un modelo de negocio de alta rentabilidad impulsado por tecnología de vanguardia."
+                <p className="text-white/60 text-xs md:text-sm leading-relaxed mb-6 font-light">
+                  Tu ventaja competitiva es nuestra capacidad de ejecución. La central garantiza el desarrollo, despliegue y soporte de cada proyecto. Tú pones la visión; nosotros el código.
                 </p>
 
                 {/* Stats Indicators Inside Card Foot */}
                 <div className="grid grid-cols-3 gap-3 pt-6 border-t border-white/10">
                   {stats.map((stat, i) => (
                     <div key={i} className="flex flex-col items-start">
-                      <div className="text-lg md:text-xl font-black text-white tracking-tighter leading-none mb-1">
+                      <div className="text-xl md:text-2xl font-black text-white tracking-tighter leading-none mb-1">
                         {stat.value}
                       </div>
                       <div className="text-electric text-[7px] font-black uppercase tracking-widest leading-none opacity-80">

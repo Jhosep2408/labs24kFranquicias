@@ -4,27 +4,27 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Euro, TrendingUp, Key, BarChart3, Users, Award } from "lucide-react";
 
-const features = [
+const incomeStreams = [
   {
     icon: <Euro className="text-electric-cyan" />,
-    title: "Inversión Inteligente",
-    description: "Desde 50.000€ accede a un ecosistema de alta tecnología con mobiliario premium y marketing disruptivo.",
+    title: "Capa 1: Margen Directo (Implementación)",
+    description: "Beneficio inmediato por cada proyecto cerrado. Integración tecnológica y despliegue rápido.",
   },
   {
     icon: <TrendingUp className="text-electric-cyan" />,
-    title: "ROI Acelerado",
-    description: "Retorno de inversión proyectado entre 2 y 3 años con un modelo de negocio optimizado para el éxito.",
+    title: "Capa 2: Canon de Mantenimiento (Recurrencia)",
+    description: "El cliente paga una cuota mensual por el uso de los servidores e IA de Labs24k. Tú te llevas una comisión del porcentaje cada mes de forma pasiva.",
   },
   {
-    icon: <Key className="text-electric-cyan" />,
-    title: "Llave en Mano",
-    description: "Nos encargamos de todo: desde el diseño del local hasta la formación de su equipo de elite.",
+    icon: <Award className="text-electric-cyan" />,
+    title: "Capa 3: Consultoría de Estrategia",
+    description: "Cobro por horas de formación y asesoramiento premium a ejecutivos locales.",
   },
 ];
 
 export function BusinessModel() {
   return (
-    <section id="nosotros" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden">
+    <section id="modelo" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-b border-white/5">
       {/* Decorative Blur */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-electric-cyan/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -38,50 +38,48 @@ export function BusinessModel() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-electric-cyan/20 bg-electric-cyan/5 text-electric-cyan text-[10px] font-black uppercase tracking-widest mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-electric-cyan animate-pulse" />
-              Oportunidad de Negocio 2026
+              El Modelo de Negocio
             </div>
             
             <h2 className="text-3xl md:text-5xl font-black text-white leading-tight uppercase mb-8 italic">
-              La Franquicia Rentable que <br />
-              <span className="text-electric-cyan">Revoluciona el Mercado</span>
+              4. Estructura de <br />
+              Rentabilidad <span className="text-electric-cyan">Blindada</span>
             </h2>
             
             <div className="space-y-8">
               <p className="text-white/60 leading-relaxed text-lg font-light">
-                Labs 24K redefine el concepto de franquicia corporativa. No solo entregamos un local; entregamos un <span className="text-white font-bold">laboratorio de éxito empresarial</span> impulsado por IA y diseño de vanguardia.
+                Para ser el modelo más completo, debemos ofrecer múltiples capas de beneficio simultáneas.
               </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-electric-cyan/30 transition-colors group">
-                  <div className="text-3xl font-black text-white mb-1">5%</div>
-                  <div className="text-[10px] text-electric-cyan font-black uppercase tracking-widest opacity-60">Royalties Competitivos</div>
+
+              <div className="p-8 rounded-3xl bg-electric-cyan/5 border border-electric-cyan/20 relative overflow-hidden">
+                <div className="absolute -right-4 -top-4 opacity-10">
+                  <BarChart3 size={100} className="text-electric-cyan" />
                 </div>
-                <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-electric-cyan/30 transition-colors group">
-                  <div className="text-3xl font-black text-white mb-1">24/7</div>
-                  <div className="text-[10px] text-electric-cyan font-black uppercase tracking-widest opacity-60">Soporte Estratégico</div>
-                </div>
+                <h4 className="text-electric-cyan font-black uppercase text-xs tracking-widest mb-4">La Fórmula de la Rentabilidad</h4>
+                <p className="text-white/80 text-sm leading-relaxed italic font-light">
+                  "Combina el margen directo rápido de la implementación, con la estabilidad brutal del canon de mantenimiento mensual. Es el seguro definitivo."
+                </p>
               </div>
             </div>
           </motion.div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 gap-4">
-            {features.map((feature, idx) => (
+          <div className="grid grid-cols-1 gap-6">
+            {incomeStreams.map((stream, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="p-8 rounded-3xl bg-gradient-to-br from-white/[0.03] to-transparent border border-white/5 flex items-start gap-6 group hover:bg-white/[0.05] transition-all"
+                className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col sm:flex-row items-start gap-6 group hover:border-electric-cyan/30 hover:bg-white/[0.04] transition-all shadow-lg"
               >
-                <div className="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                  {feature.icon}
+                <div className="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-electric-cyan/20 transition-all">
+                  {stream.icon}
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-white mb-2">{feature.title}</h4>
-                  <p className="text-white/40 text-sm leading-relaxed">{feature.description}</p>
+                  <h4 className="text-xl font-black text-white mb-3 tracking-normal md:tracking-tight italic uppercase">{stream.title}</h4>
+                  <p className="text-white/50 text-sm leading-relaxed font-light">{stream.description}</p>
                 </div>
               </motion.div>
             ))}

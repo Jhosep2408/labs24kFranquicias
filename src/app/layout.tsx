@@ -49,6 +49,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "/images/logoOficial.svg",
+    shortcut: "/images/logoOficial.svg",
+    apple: "/images/logoOficial.svg",
+  },
 };
 
 export const viewport = {
@@ -63,8 +68,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Labs 24K",
+    "url": "https://labs24kfranquicias.com",
+    "logo": "https://labs24kfranquicias.com/images/logo.png",
+    "description": "Franquicia Global de Inteligencia Artificial para líderes tecnológicos.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "C. Marqués de San Esteban, 3",
+      "addressLocality": "Gijón",
+      "addressRegion": "Asturias",
+      "postalCode": "33206",
+      "addressCountry": "ES"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+34-984-25-23-61",
+      "contactType": "sales",
+      "email": "info@labs24kfranquicias.com",
+      "areaServed": "Global",
+      "availableLanguage": ["Spanish", "English"]
+    }
+  };
+
   return (
     <html lang="es" className="dark scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.variable} ${outfit.variable} antialiased selection:bg-gold/30 selection:text-white bg-black`}>
         <Navbar />
         {children}

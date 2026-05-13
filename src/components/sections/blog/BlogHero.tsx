@@ -11,13 +11,53 @@ export function BlogHero() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const [searchQuery, setSearchQuery] = useState("");
+  const [matchIndex, setMatchIndex] = useState(0);
+  const [currentMatches, setCurrentMatches] = useState<Element[]>([]);
 
   useEffect(() => {
     setSearchQuery(searchParams.get("q") || "");
   }, [searchParams]);
 
+  const scrollToNextMatch = () => {
+    if (!searchQuery.trim()) return;
+
+    // Obtener todos los elementos que podrían contener texto
+    const elements = document.querySelectorAll('p, h1, h2, h3, h4, span, li, a');
+    const matches: Element[] = [];
+    const query = searchQuery.toLowerCase();
+    
+    elements.forEach(el => {
+      // Solo elementos que contienen el texto y no tienen hijos (para no agarrar contenedores grandes)
+      if (el.textContent?.toLowerCase().includes(query) && el.children.length === 0) {
+        matches.push(el);
+      }
+    });
+
+    if (matches.length > 0) {
+      // Ciclo a través de los resultados
+      const nextIndex = matches.length === currentMatches.length ? (matchIndex + 1) % matches.length : 0;
+      
+      const target = matches[nextIndex];
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // Resaltado temporal profesional (flash de color cyan)
+      const originalBg = (target as HTMLElement).style.backgroundColor;
+      (target as HTMLElement).style.backgroundColor = 'rgba(32, 236, 252, 0.4)';
+      (target as HTMLElement).style.transition = 'background-color 0.3s ease';
+      
+      setTimeout(() => {
+        (target as HTMLElement).style.backgroundColor = originalBg;
+      }, 1500);
+
+      setMatchIndex(nextIndex);
+      setCurrentMatches(matches);
+    }
+  };
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // 1. Filtrar artículos en la lista
     const params = new URLSearchParams(searchParams.toString());
     if (searchQuery.trim()) {
       params.set("q", searchQuery.trim());
@@ -25,6 +65,9 @@ export function BlogHero() {
       params.delete("q");
     }
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
+
+    // 2. Saltar a la palabra en el texto
+    scrollToNextMatch();
   };
 
   return (

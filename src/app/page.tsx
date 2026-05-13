@@ -2,7 +2,19 @@
 
 import React from "react";
 import { Hero } from "@/components/sections/Hero";
+import { Manifesto } from "@/components/sections/Manifesto";
+import { Opportunity } from "@/components/sections/Opportunity";
+import { AIOperatingSystem } from "@/components/sections/AIOperatingSystem";
+import { CompetitiveAdvantages } from "@/components/sections/CompetitiveAdvantages";
+import { LaunchProtocol } from "@/components/sections/LaunchProtocol";
+import { SupportInsurance } from "@/components/sections/SupportInsurance";
 import { Sectors } from "@/components/sections/Sectors";
+import { BusinessInABox } from "@/components/sections/BusinessInABox";
+import { MonopolyCalculator } from "@/components/sections/MonopolyCalculator";
+import { TuringTest } from "@/components/sections/TuringTest";
+import { Authority } from "@/components/sections/Authority";
+import { FutureVision } from "@/components/sections/FutureVision";
+import { FAQ } from "@/components/sections/FAQ";
 import { LeadForm } from "@/components/sections/LeadForm";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { BusinessModel } from "@/components/sections/BusinessModel";
@@ -15,11 +27,41 @@ export default function Home() {
       {/* Hero Section */}
       <Hero />
 
-      {/* Business Model Section (New) */}
+      {/* Manifesto Section (Blueprint Step 3) */}
+      <Manifesto />
+
+      {/* Opportunity Section (Blueprint Step 4) */}
+      <Opportunity />
+
+      {/* AI Operating System (New Ecosystem Step 1) */}
+      <AIOperatingSystem />
+
+      {/* Competitive Advantages (New Ecosystem Step 2) */}
+      <CompetitiveAdvantages />
+
+      {/* Launch Protocol (New Ecosystem Step 3) */}
+      <LaunchProtocol />
+
+      {/* Business Model Section (New Ecosystem Step 4) */}
       <BusinessModel />
+
+      {/* Support & Insurance (New Ecosystem Step 5) */}
+      <SupportInsurance />
 
       {/* Sectors Section */}
       <Sectors />
+
+      {/* Business-in-a-Box Section (Blueprint Step 6) */}
+      <BusinessInABox />
+
+      {/* Monopoly Calculator Section (Blueprint Step 7) */}
+      <MonopolyCalculator />
+
+      {/* Turing Test / AI Chat Section (Blueprint Step 8) */}
+      <TuringTest />
+
+      {/* Authority & Trust Section (New) */}
+      <Authority />
 
       {/* Authority Infinite Banner */}
       <section className="py-12 bg-[#000814] border-y border-white/5 overflow-hidden flex items-center">
@@ -54,6 +96,12 @@ export default function Home() {
           ))}
         </motion.div>
       </section>
+
+      {/* Future Vision & Roadmap (New) */}
+      <FutureVision />
+
+      {/* FAQ Section (New) */}
+      <FAQ />
 
       {/* Lead Capture Form Section */}
       <LeadForm />
